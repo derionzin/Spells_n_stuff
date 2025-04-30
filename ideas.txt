@@ -1,0 +1,175 @@
+bombs
+1002911f
+when making complex attack animations that require movement
+remember hovertile idea and make it an array with the animated thing that splices itself when done
+i think same could apply for movement.
+
+entity.x += (targetX - entity.x) * 0.2;
+entity.y += (targetY - entity.y) * 0.2;
+
+
+zombie low damage - change of getting the foe infected, when dies becomes zombie(go to the enemy that infected him)
+guaranteed poison when infected or even if not infected
+
+154
+115
+
+easter egg x and zero
+
+add fusions to the game
+
+--- pathing algorithms ----
+traveling salesman algorithm
+try again and again
+
+depth first search
+
+sea in the rpg
+
+secret door/hiden item
+
+spider web
+
+
+visual decorations animated in the forest and other areaas like bunnies and stuff
+
+
+warren
+
+Lumia
+
+
+-------------------------------------------------------------
+
+
+crow stuff
+
+draw some more characters
+
+heal spell
+
+ai use tide spell
+
+new type of spell, summon things spell
+
+HATCHING = take turns to hatch and then turn into thr next summon index in the summandata
+
+Camera that follows the enemy actions
+Update checkcloser tiles during field spells
+351291mmem
+
+
+icons update only to show the ones that matter in menu and hovertile  || after making more conditions tho
+make more conditions
+
+an array called crown, that holds the initial stats for each summon if it was king. Even a wall is allowed as king
+create a variable = chosen_king to hold the index of crown according to summon type chosen in menu
+
+choose the king, crown button
+
+TRAPS!!!!
+
+neutral chest/tems
+
+sacrifice to summon
+
+summoning thing that summons things
+
+water to the game bruv  --- rpg water tiles
+
+
+create more tiles
+
+create more monsters
+
+critical hit
+
+mythical biome monster
+
+2v1 battles
+
+
+
+
+0 nothing
+1 dialog
+2 battle
+3 notification
+4 wait
+5 change animtion one shot
+6 change animation loop
+
+
+
+
+  "Sack monster", // i name
+  30,             // i+1 health 
+  10,              // i+2 attack
+  1,              // i+3 range
+  0,              // i+4 idle animation
+  2,              // i+5 sc = summon cost
+  "Just a sackboy doing sack things", // description i+6
+  1,              // domain  //here is the tide one i+7
+  4,              // attack animation
+  10,              // chance of attaining the token i+9
+  0,             // damge/resistance to freeze i+10
+  0,             // poison damage/resistance i+11
+  0,             // immune to push i+12
+  0,             // lightinigng   i+13
+
+
+
+let player_king =
+
+           id
+            sp = summon power
+            max sp
+            tile located  king[3]
+            summon type king[4]
+            dead or not king[5]
+            sp gain per turn king[6]
+            cards drawn per turn king[7]
+            starting hand size [8]
+            later on add the upgrades here
+
+grid =
+
+            images.slot,                               [i]
+            x,                                         [i+1]
+            y,                                         [i+2]
+            tilewidth,                                 [i+3]
+            tileheight,                                [i+4]
+            selected                                   [i+5]
+            summon grid                                [i+6] 
+            type                                       [i+7]
+            offset x                                   [i+8]
+            offset y                                   [i+9]
+            animation                                  [i+10]
+            available for the visual water effect      [i+11]
+            wave for the wave effect                   [i+12]
+            wave trying to reach zero                  [i+13]
+            summon hp                                  [i+14]
+            summon damage taken animation              [i+15]
+            summon has moved?                          [i+16]
+            summon has attacked?                       [i+17]
+            summon is foe?                             [i+18]
+            tile_type                                  [i+19] == 7 == labirinth
+            frozen                                     [i+20]
+            poison                                     [i+21]
+            electrified                                [i+22]
+
+            462
+            
+
+
+              //summon 5 -- spell 2
+  "Freeze boom", // name
+  0,           // 0 hp to identify as a spell [i+1]
+  "target a tile 3x3",           // desciption [i+2]
+  "the tile will freeze",           // desciption [i+3]
+  10,           // animation [i+4]
+  1,           // sc = spell cost [i+5]
+  "very cool",    // desciption [i+6]
+  10,                     // damage [i+7]
+  2,                      // range [i+8]
+  5,

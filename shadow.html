@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Raycasting Sombra no Canvas</title>
+    <style>
+        canvas {
+            background: white;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="1000" height="1000"></canvas>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+// Sol (luz)
+let sun = { x: 150, y: 150 };
+
+// Polígono do objeto (um quadrado como exemplo)
+const object = [
+    { x: 400, y: 400 },
+    { x: 500, y: 400 },
+    { x: 500, y: 500 },
+    { x: 400, y: 500 }
+];
+
+// Função para desenhar o objeto
+function drawObject(points) {
+    ctx.beginPath();
+    ctx.moveTo(points[0].x, points[0].y);
+    for (let i = 1; i < points.length; i++) {
+        ctx.lineTo(points[i].x, points[i].y);
+    }
+    ctx.closePath();
+    ctx.fillStyle = 'black';
+    ctx.fill();
+}
+// Função para desenhar a sombra
+function drawShadow(points) {
+    // Primeiro, gerar os pontos "projetados"
+    let projected = points.map(point => {
+        let dx = point.x - sun.x;
+        let dy = point.y - sun.y;
+        const scale = 1000; // quanto prolongar
+        return {
+            x: point.x + dx * scale,
+            y: point.y + dy * scale
+        };
+    });
+
+    // Desenhar a sombra conectando os pontos
+    ctx.beginPath();
+    ctx.moveTo(points[0].x, points[0].y);
+    ctx.lineTo(projected[0].x, projected[0].y);
+
+    for (let i = 2; i < points.length; i++) {
+        ctx.lineTo(projected[i].x, projected[i].y);
+        ctx.lineTo(points[i].x, points[i].y);
+    }
+
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(50, 50, 50, 0.5)';
+    ctx.fill();
+}
+
+// Função para desenhar o sol
+function drawSun() {
+    ctx.beginPath();
+    ctx.arc(sun.x, sun.y, 20, 0, Math.PI * 2);
+    ctx.fillStyle = 'yellow';
+    ctx.fill();
+}
+
+// Loop principal
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    drawSun();
+    drawShadow(object);
+    drawObject(object);
+
+    requestAnimationFrame(draw);
+}
+
+// Mover o sol com o mouse
+canvas.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    sun.x = e.clientX - rect.left;
+    sun.y = e.clientY - rect.top;
+});
+
+// Inicia o desenho
+draw();
+</script>
+</body>
+</html>
